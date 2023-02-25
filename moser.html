@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lan de>
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+<title>PATIFY PRIVATE - Moser</title>
+
+
+<head>
+    <h1 class="center">Joe Moser</h1>
+</head>
+
+
+
+
+<body>
+    <div class="flex-oneline">
+        <!-- HOMEBUTTON -->
+        <button class="home" onclick="Home()">🏠</button>
+        <!------------------------------------>
+
+
+        <!--Soundregler-->
+        <div class="soundreglerpadding">
+            <h1 class="volumeemoji">🔊</h1>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="1">
+        </div>
+        <!------------------------------------>
+    </div>
+
+    <!--Visualizer-->
+    <canvas id="visualizer"></canvas>
+    <audio id="audio"></audio>
+    <!------------------------------------>
+
+    <hr>
+
+    <!-- Dropdown-Menü zum Auswählen eines Songs -->
+    <div class="song-select-padding">
+        <select id="song-select" class="song-select" multiple="multiple" size="1">
+    <option class="stopmusic" value="stop">Stop</option>
+
+    <option class="zufällig" value="zufällig">Zufällig</option>
+
+    <option value="moser_mp3/1000 Grad.mp3">1000 Grad</option>
+    <option value="moser_mp3/17_38.mp3">17_38</option>
+    <option value="moser_mp3/3233.mp3">3233</option>
+    <option value="moser_mp3/4 Schritte.mp3">4 Schritte</option>
+    <option value="moser_mp3/61 Grad.mp3">61 Grad</option>
+    <option value="moser_mp3/ALSO BITTE (feat. Lucio101 & Nizi19).mp3">ALSO BITTE (feat. Lucio101 & Nizi19)</option>
+    <option value="moser_mp3/Babyblau.mp3">Babyblau</option>
+    <option value="moser_mp3/Blind.mp3">Blind</option>
+    <option value="moser_mp3/Çay.mp3">Çay</option>
+    <option value="moser_mp3/Dopeboys.mp3">Dopeboys</option>
+    <option value="moser_mp3/Durk.mp3">Durk</option>
+    <option value="moser_mp3/Fanta Shokata.mp3">Fanta Shokata</option>
+    <option value="moser_mp3/Früher Broke.mp3">Früher Broke</option>
+    <option value="moser_mp3/Happzh.mp3">Happzh</option>
+    <option value="moser_mp3/Ich muss raus - Slowed Version.mp3">Ich muss raus - Slowed Version</option>
+    <option value="moser_mp3/Ich muss raus.mp3">Ich muss raus</option>
+    <option value="moser_mp3/ITACHI FLOW.mp3">ITACHI FLOW</option>
+    <option value="moser_mp3/Kalenji.mp3">Kalenji</option>
+    <option value="moser_mp3/Kopfnickersound 2.mp3">Kopfnickersound 2</option>
+    <option value="moser_mp3/Kopfnickersound.mp3">Kopfnickersound</option>
+    <option value="moser_mp3/LOCKDOWN (feat. Lucio101 & Nizi19).mp3">LOCKDOWN (feat. Lucio101 & Nizi19)</option>
+    <option value="moser_mp3/M.I.D.N.mp3">M.I.D.N</option>
+    <option value="moser_mp3/Mond.mp3">Mond</option>
+    <option value="moser_mp3/Nix (feat. Nizi19).mp3">Nix (feat. Nizi19)</option>
+    <option value="moser_mp3/Outro.mp3">Outro</option>
+    <option value="moser_mp3/Paff Paff.mp3">Paff Paff</option>
+    <option value="moser_mp3/Schlaflosi N8.mp3">Schlaflosi N8</option>
+<option value="moser_mp3/Schlagsahne.mp3">Schlagsahne</option>
+<option value="moser_mp3/Schwarze Scheiben.mp3">Schwarze Scheiben</option>
+<option value="moser_mp3/Sic4rio - Rap United.mp3">Sic4rio - Rap United #8</option>
+<option value="moser_mp3/Tauch tief.mp3">Tauch tief</option>
+<option value="moser_mp3/Topfit.mp3">Topfit</option>
+<option value="moser_mp3/Traffic.mp3">Traffic</option>
+<option value="moser_mp3/Trainingsanzug.mp3">Trainingsanzug</option>
+<option value="moser_mp3/Y-3.mp3">Y-3</option>
+
+    
+
+
+</select>
+    </div>
+    <!------------------------------------>
+
+</body>
+
+<script>
+    //Visualisierung, die sich zum entsprechenden Sound bewegt
+    const audioContext = new AudioContext();
+
+    const analyserNode = audioContext.createAnalyser();
+    analyserNode.fftSize = 2048;
+
+    const canvas = document.getElementById('visualizer');
+    const canvasContext = canvas.getContext('2d');
+
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+
+    const audioElement = document.getElementById('audio');
+    const audioSrc = audioContext.createMediaElementSource(audioElement);
+
+    //Audiospur mit Analyse und Audioinhalt verbinden, damit sich die Balken des Visualizers zur Musik bewegen.
+    audioSrc.connect(analyserNode).connect(audioContext.destination);
+
+    const bufferLength = analyserNode.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    const barWidth = (WIDTH / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
+
+    //Balkenanzeige immer aktuell halten
+    function renderFrame() {
+        requestAnimationFrame(renderFrame);
+
+        x = 0;
+
+        analyserNode.getByteFrequencyData(dataArray);
+
+
+        //Canvasfarbe
+        canvasContext.fillStyle = 'rgb(0,0,0)';
+
+        //Canvas Zeichnen
+        canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+
+        //Streifenfarbe
+        for (let i = 0; i < bufferLength; i++) {
+            barHeight = dataArray[i];
+
+            canvasContext.fillStyle = 'rgb(' + barHeight + ',207, 172';
+            canvasContext.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+            x += barWidth + 1;
+        }
+    }
+
+    renderFrame();
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    const songSelect = document.getElementById('song-select');
+
+    songSelect.addEventListener('change', function(event) {
+        audioElement.src = event.target.value;
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+    //Funktion spielt sich ab, sobald das laufende Lied beendet ist.
+    audio.addEventListener('ended', function() {
+        //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+        let randomIndex = Math.floor(Math.random() * songSelect.length);
+        //Überspringe "Stop"-Option
+        if (songSelect.options[randomIndex].value === "stop") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Überspringe "Zufällig"-Option
+        if (songSelect.options[randomIndex].value === "zufällig") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Ändere den ausgewählten Index auf die zufällige Nummer
+        songSelect.selectedIndex = randomIndex;
+        //Ändere die Audiodatei
+        audioElement.src = songSelect.value;
+        //Spiele das Audio ab
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    songSelect.addEventListener('change', function(event) {
+        if (event.target.value === "zufällig") {
+            //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+            let randomIndex = Math.floor(Math.random() * songSelect.length);
+            //Überspringe "Stop"-Option
+            if (songSelect.options[randomIndex].value === "stop") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Überspringe "Zufällig"-Option
+            if (songSelect.options[randomIndex].value === "zufällig") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Ändere den ausgewählten Index auf die zufällige Nummer
+            songSelect.selectedIndex = randomIndex;
+            //Ändere die Audiodatei
+            audioElement.src = songSelect.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        } else {
+            //Ändere die Audiodatei
+            audioElement.src = event.target.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        }
+    });
+
+
+
+
+    //Soundregler
+    const audioelement = document.getElementById('audio');
+    const volumeControl = document.getElementById('volume');
+
+    volumeControl.addEventListener('input', function(event) {
+        // Audio Lautstärke auf Reglerstärke setzen
+        audioElement.volume = event.target.value;
+    });
+    //-----------------------------------------------------
+</script>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lan de>
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+<title>PATIFY PRIVATE - RUF</title>
+
+
+<head>
+    <h1 class="center">Ruf</h1>
+</head>
+
+
+
+
+<body>
+    <div class="flex-oneline">
+        <!-- HOMEBUTTON -->
+        <button class="home" onclick="Home()">🏠</button>
+        <!------------------------------------>
+
+
+        <!--Soundregler-->
+        <div class="soundreglerpadding">
+            <h1 class="volumeemoji">🔊</h1>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="1">
+        </div>
+        <!------------------------------------>
+    </div>
+
+    <!--Visualizer-->
+    <canvas id="visualizer"></canvas>
+    <audio id="audio"></audio>
+    <!------------------------------------>
+
+    <hr>
+
+    <!-- Dropdown-Menü zum Auswählen eines Songs -->
+    <div class="song-select-padding">
+        <select id="song-select" class="song-select" multiple="multiple" size="1">
+    <option class="stopmusic" value="stop">Stop</option>
+
+    <option class="zufällig" value="zufällig">Zufällig</option>
+
+<option value="ruf_mp3/21 Reasons (feat. Ella Henderson).mp3">21 Reasons (feat. Ella Henderson)</option>
+<option value="ruf_mp3/Afraid To Feel.mp3">Afraid To Feel</option>
+<option value="ruf_mp3/Alright (feat. KIDDO).mp3">Alright (feat. KIDDO)</option>
+<option value="ruf_mp3/Anywhere With You.mp3">Anywhere With You</option>
+<option value="ruf_mp3/Around the World - DAZZ Remix.mp3">Around the World - DAZZ Remix</option>
+<option value="ruf_mp3/Back to Life.mp3">Back to Life</option>
+<option value="ruf_mp3/Baianá.mp3">Baianá</option>
+<option value="ruf_mp3/Belly Dancer.mp3">Belly Dancer</option>
+<option value="ruf_mp3/Cantina Band.mp3">Cantina Band</option>
+<option value="ruf_mp3/Clap Your Hands.mp3">Clap Your Hands</option>
+<option value="ruf_mp3/Conga.mp3">Conga</option>
+<option value="ruf_mp3/Days Like This.mp3">Days Like This</option>
+<option value="ruf_mp3/Deep Down (feat. Never Dull).mp3">Deep Down (feat. Never Dull)</option>
+<option value="ruf_mp3/Don't You Hold Me Down.mp3">Don't You Hold Me Down</option>
+<option value="ruf_mp3/Dreams Come True.mp3">Dreams Come True</option>
+<option value="ruf_mp3/Ferrari.mp3">Ferrari</option>
+<option value="ruf_mp3/Ghost.mp3">Ghost</option>
+<option value="ruf_mp3/Gimme Your Love.mp3">Gimme Your Love</option>
+<option value="ruf_mp3/Give It To Me - Full Vocal Mix.mp3">Give It To Me - Full Vocal Mix</option>
+<option value="ruf_mp3/Good Feeling.mp3">Good Feeling</option>
+<option value="ruf_mp3/Halo (feat. PIA MARIA).mp3">Halo (feat. PIA MARIA)</option>
+<option value="ruf_mp3/Harmony (feat. Xillions).mp3">Harmony (feat. Xillions)</option>
+<option value="ruf_mp3/He Goes Down.mp3">He Goes Down</option>
+<option value="ruf_mp3/Horny - YouNotUs Club Version.mp3">Horny - YouNotUs Club Version</option>
+<option value="ruf_mp3/Hurricane.mp3">Hurricane</option>
+<option value="ruf_mp3/It's A Hard Knock Life.mp3">It's A Hard Knock Life</option>
+<option value="ruf_mp3/Last Night (feat. HARLEE).mp3">Last Night (feat. HARLEE)</option>
+<option value="ruf_mp3/Let You Do This (with Buy Now).mp3">Let You Do This (with Buy Now)</option>
+<option value="ruf_mp3/Let's Call It Love.mp3">Let's Call It Love</option>
+<option value="ruf_mp3/Lift Your Voices.mp3">Lift Your Voices</option>
+<option value="ruf_mp3/Lights Go Down.mp3">Lights Go Down</option>
+<option value="ruf_mp3/Like I Love You - KYANU Remix.mp3">Like I Love You - KYANU Remix</option>
+<option value="ruf_mp3/Love In The Music.mp3">Love In The Music</option>
+<option value="ruf_mp3/Melody.mp3">Melody</option>
+<option value="ruf_mp3/Move Your Body.mp3">Move Your Body</option>
+<option value="ruf_mp3/Never Going Home.mp3">Never Going Home</option>
+<option value="ruf_mp3/No Go Go Go!.mp3">No Go Go Go!</option>
+<option value="ruf_mp3/Ocean Eyes.mp3">Ocean Eyes</option>
+<option value="ruf_mp3/One Day.mp3">One Day</option>
+<option value="ruf_mp3/Only You.mp3">Only You</option>
+<option value="ruf_mp3/OUT OUT (feat. Charli XCX & Saweetie).mp3">OUT OUT (feat. Charli XCX & Saweetie)</option>
+<option value="ruf_mp3/Over You (feat. Lovespeake).mp3">Over You (feat. Lovespeake)</option>
+<option value="ruf_mp3/Rain In Ibiza.mp3">Rain In Ibiza</option>
+<option value="ruf_mp3/Ready To Love.mp3">Ready To Love</option>
+<option value="ruf_mp3/Ritmo.mp3">Ritmo</option>
+<option value="ruf_mp3/Savage.mp3">Savage</option>
+<option value="ruf_mp3/Single Life (feat. MICHAELA).mp3">Single Life (feat. MICHAELA)</option>
+<option value="ruf_mp3/Stay the Night.mp3">Stay the Night</option>
+<option value="ruf_mp3/Sun Is Up.mp3">Sun Is Up</option>
+<option value="ruf_mp3/Take Me To America.mp3">Take Me To America</option>
+<option value="ruf_mp3/The Ritz.mp3">The Ritz</option>
+<option value="ruf_mp3/Thunder.mp3">Thunder</option>
+<option value="ruf_mp3/Tonight We Dance.mp3">Tonight We Dance</option>
+<option value="ruf_mp3/We Could Be Together.mp3">We Could Be Together</option>
+<option value="ruf_mp3/Weekend (Party, Sleep, Repeat).mp3">Weekend (Party, Sleep, Repeat)</option>
+<option value="ruf_mp3/We're Still Young.mp3">We're Still Young</option>
+<option value="ruf_mp3/Where Did You Go_ (feat. MNEK).mp3">Where Did You Go_ (feat. MNEK)</option>
+<option value="ruf_mp3/Wishlist - MistaJam Remix.mp3">Wishlist - MistaJam Remix</option>
+<option value="ruf_mp3/With My Friends.mp3">With My Friends</option>
+<option value="ruf_mp3/You Got The Love.mp3">You Got The Love</option>
+
+</select>
+    </div>
+    <!------------------------------------>
+
+</body>
+
+<script>
+    //Visualisierung, die sich zum entsprechenden Sound bewegt
+    const audioContext = new AudioContext();
+
+    const analyserNode = audioContext.createAnalyser();
+    analyserNode.fftSize = 2048;
+
+    const canvas = document.getElementById('visualizer');
+    const canvasContext = canvas.getContext('2d');
+
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+
+    const audioElement = document.getElementById('audio');
+    const audioSrc = audioContext.createMediaElementSource(audioElement);
+
+    //Audiospur mit Analyse und Audioinhalt verbinden, damit sich die Balken des Visualizers zur Musik bewegen.
+    audioSrc.connect(analyserNode).connect(audioContext.destination);
+
+    const bufferLength = analyserNode.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    const barWidth = (WIDTH / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
+
+    //Balkenanzeige immer aktuell halten
+    function renderFrame() {
+        requestAnimationFrame(renderFrame);
+
+        x = 0;
+
+        analyserNode.getByteFrequencyData(dataArray);
+
+
+        //Canvasfarbe
+        canvasContext.fillStyle = 'rgb(0,0,0)';
+
+        //Canvas Zeichnen
+        canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+
+        //Streifenfarbe
+        for (let i = 0; i < bufferLength; i++) {
+            barHeight = dataArray[i];
+
+            canvasContext.fillStyle = 'rgb(' + barHeight + ',207, 172';
+            canvasContext.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+            x += barWidth + 1;
+        }
+    }
+
+    renderFrame();
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    const songSelect = document.getElementById('song-select');
+
+    songSelect.addEventListener('change', function(event) {
+        audioElement.src = event.target.value;
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+    //Funktion spielt sich ab, sobald das laufende Lied beendet ist.
+    audio.addEventListener('ended', function() {
+        //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+        let randomIndex = Math.floor(Math.random() * songSelect.length);
+        //Überspringe "Stop"-Option
+        if (songSelect.options[randomIndex].value === "stop") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Überspringe "Zufällig"-Option
+        if (songSelect.options[randomIndex].value === "zufällig") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Ändere den ausgewählten Index auf die zufällige Nummer
+        songSelect.selectedIndex = randomIndex;
+        //Ändere die Audiodatei
+        audioElement.src = songSelect.value;
+        //Spiele das Audio ab
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    songSelect.addEventListener('change', function(event) {
+        if (event.target.value === "zufällig") {
+            //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+            let randomIndex = Math.floor(Math.random() * songSelect.length);
+            //Überspringe "Stop"-Option
+            if (songSelect.options[randomIndex].value === "stop") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Überspringe "Zufällig"-Option
+            if (songSelect.options[randomIndex].value === "zufällig") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Ändere den ausgewählten Index auf die zufällige Nummer
+            songSelect.selectedIndex = randomIndex;
+            //Ändere die Audiodatei
+            audioElement.src = songSelect.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        } else {
+            //Ändere die Audiodatei
+            audioElement.src = event.target.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        }
+    });
+
+
+
+
+    //Soundregler
+    const audioelement = document.getElementById('audio');
+    const volumeControl = document.getElementById('volume');
+
+    volumeControl.addEventListener('input', function(event) {
+        // Audio Lautstärke auf Reglerstärke setzen
+        audioElement.volume = event.target.value;
+    });
+    //-----------------------------------------------------
+</script>

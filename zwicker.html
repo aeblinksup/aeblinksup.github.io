@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lan de>
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+<title>PATIFY PRIVATE - ZWICKER</title>
+
+
+<head>
+    <h1 class="center">Zwicker</h1>
+</head>
+
+
+
+
+<body>
+    <div class="flex-oneline">
+        <!-- HOMEBUTTON -->
+        <button class="home" onclick="Home()">🏠</button>
+        <!------------------------------------>
+
+
+        <!--Soundregler-->
+        <div class="soundreglerpadding">
+            <h1 class="volumeemoji">🔊</h1>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="1">
+        </div>
+        <!------------------------------------>
+    </div>
+
+    <!--Visualizer-->
+    <canvas id="visualizer"></canvas>
+    <audio id="audio"></audio>
+    <!------------------------------------>
+
+    <hr>
+
+    <!-- Dropdown-Menü zum Auswählen eines Songs -->
+    <div class="song-select-padding">
+        <select id="song-select" class="song-select" multiple="multiple" size="1">
+    <option class="stopmusic" value="stop">Stop</option>
+
+    <option class="zufällig" value="zufällig">Zufällig</option>
+
+    <option value="zwicker_mp3/(Your Love Keeps Lifting Me) Higher & Higher.mp3">(Your Love Keeps Lifting Me) Higher & Higher</option>
+<option value="zwicker_mp3/8 Ball.mp3">8 Ball</option>
+<option value="zwicker_mp3/A Little Respect - 2009 - Remaster.mp3">A Little Respect - 2009 - Remaster</option>
+<option value="zwicker_mp3/Achterbahn.mp3">Achterbahn</option>
+<option value="zwicker_mp3/Ain't No Mountain High Enough.mp3">Ain't No Mountain High Enough</option>
+<option value="zwicker_mp3/All Night Long (All Night).mp3">All Night Long (All Night)</option>
+<option value="zwicker_mp3/Alo Paixao - Live.mp3">Alo Paixao - Live</option>
+<option value="zwicker_mp3/Baby Baby.mp3">Baby Baby</option>
+<option value="zwicker_mp3/Bailando - Spanish Version.mp3">Bailando - Spanish Version</option>
+<option value="zwicker_mp3/Beleza Rara - Ao Vivo.mp3">Beleza Rara - Ao Vivo</option>
+<option value="zwicker_mp3/Better Days.mp3">Better Days</option>
+<option value="zwicker_mp3/Bitter Sweet Symphony.mp3">Bitter Sweet Symphony</option>
+<option value="zwicker_mp3/Brass in Pocket - 2006 Remaster.mp3">Brass in Pocket - 2006 Remaster</option>
+<option value="zwicker_mp3/Brilliant Disguise.mp3">Brilliant Disguise</option>
+<option value="zwicker_mp3/Cocaine.mp3">Cocaine</option>
+<option value="zwicker_mp3/Colors.mp3">Colors</option>
+<option value="zwicker_mp3/Crazy.mp3">Crazy</option>
+<option value="zwicker_mp3/Don't Come Around Here No More.mp3">Don't Come Around Here No More</option>
+<option value="zwicker_mp3/Don't Go Breaking My Heart.mp3">Don't Go Breaking My Heart</option>
+<option value="zwicker_mp3/Don't Stop - 2004 Remaster.mp3">Don't Stop - 2004 Remaster</option>
+<option value="zwicker_mp3/Doo Wop (That Thing).mp3">Doo Wop (That Thing)</option>
+<option value="zwicker_mp3/Everywhere - 2017 Remaster.mp3">Everywhere - 2017 Remaster</option>
+<option value="zwicker_mp3/Evil Woman.mp3">Evil Woman</option>
+<option value="zwicker_mp3/Fields Of Gold.mp3">Fields Of Gold</option>
+<option value="zwicker_mp3/Ghetto Supastar (That is What You Are) (feat. Ol' Dirty Bastard & Mýa).mp3">Ghetto Supastar (That is What You Are) (feat. Ol' Dirty Bastard & Mýa)</option>
+<option value="zwicker_mp3/Go Your Own Way.mp3">Go Your Own Way</option>
+<option value="zwicker_mp3/Heaven.mp3">Heaven</option>
+<option value="zwicker_mp3/Heroes - 2017 Remaster.mp3">Heroes - 2017 Remaster</option>
+<option value="zwicker_mp3/How Long Do I Have to Wait for You.mp3">How Long Do I Have to Wait for You</option>
+<option value="zwicker_mp3/Hurricane.mp3">Hurricane</option>
+<option value="zwicker_mp3/If I Ruled the World (Imagine That) (feat. Lauryn Hill).mp3">If I Ruled the World (Imagine That) (feat. Lauryn Hill)</option>
+<option value="zwicker_mp3/I'll Be Missing You (feat. 112).mp3">I'll Be Missing You (feat. 112)</option>
+<option value="zwicker_mp3/I'm Not In Love.mp3">I'm Not In Love</option>
+<option value="zwicker_mp3/I'm On Fire.mp3">I'm On Fire</option>
+<option value="zwicker_mp3/Jamming.mp3">Jamming</option>
+<option value="zwicker_mp3/Je ne parle pas français.mp3">Je ne parle pas français</option>
+<option value="zwicker_mp3/Je veux.mp3">Je veux</option>
+<option value="zwicker_mp3/Killing Me Softly With His Song.mp3">Killing Me Softly With His Song</option>
+<option value="zwicker_mp3/Killing Me Softly With His Song_1.mp3">Killing Me Softly With His Song_1</option>
+<option value="zwicker_mp3/L.E.S Artistes.mp3">L.E.S Artistes</option>
+<option value="zwicker_mp3/Lay Down Sally.mp3">Lay Down Sally</option>
+<option value="zwicker_mp3/Lay Down Sally_1.mp3">Lay Down Sally_1</option>
+<option value="zwicker_mp3/Listen to the Music - Single Version; 2006 Remaster.mp3">Listen to the Music - Single Version; 2006 Remaster</option>
+<option value="zwicker_mp3/Little Bit of Feel Good.mp3">Little Bit of Feel Good</option>
+<option value="zwicker_mp3/Live Forever - Remastered.mp3">Live Forever - Remastered</option>
+<option value="zwicker_mp3/Love Really Hurts Without You.mp3">Love Really Hurts Without You</option>
+<option value="zwicker_mp3/Mandolin Wind.mp3">Mandolin Wind</option>
+<option value="zwicker_mp3/Medicine (feat. Blake Shelton).mp3">Medicine (feat. Blake Shelton)</option>
+<option value="zwicker_mp3/Move on Up - Single Edit.mp3">Move on Up - Single Edit</option>
+<option value="zwicker_mp3/Mr Rock & Roll.mp3">Mr Rock & Roll</option>
+<option value="zwicker_mp3/My Girls.mp3">My Girls</option>
+<option value="zwicker_mp3/My Sweet Lord - Remastered 2014.mp3">My Sweet Lord - Remastered 2014</option>
+<option value="zwicker_mp3/No No Never.mp3">No No Never</option>
+<option value="zwicker_mp3/Ooh La La.mp3">Ooh La La</option>
+<option value="zwicker_mp3/Oxford Comma.mp3">Oxford Comma</option>
+<option value="zwicker_mp3/Paradise - Boehm Remix.mp3">Paradise - Boehm Remix</option>
+<option value="zwicker_mp3/Peaceful Easy Feeling - 2013 Remaster.mp3">Peaceful Easy Feeling - 2013 Remaster</option>
+<option value="zwicker_mp3/People Everyday.mp3">People Everyday</option>
+<option value="zwicker_mp3/Pink Moon.mp3">Pink Moon</option>
+<option value="zwicker_mp3/Regulate.mp3">Regulate</option>
+<option value="zwicker_mp3/Running Up That Hill (A Deal With God).mp3">Running Up That Hill (A Deal With God)</option>
+<option value="zwicker_mp3/Señorita.mp3">Señorita</option>
+<option value="zwicker_mp3/Shivers.mp3">Shivers</option>
+<option value="zwicker_mp3/Signed, Sealed, Delivered (I'm Yours).mp3">Signed, Sealed, Delivered (I'm Yours)</option>
+<option value="zwicker_mp3/Somewhere Only We Know.mp3">Somewhere Only We Know</option>
+<option value="zwicker_mp3/Spirit In The Sky.mp3">Spirit In The Sky</option>
+<option value="zwicker_mp3/Stand by Me.mp3">Stand by Me</option>
+<option value="zwicker_mp3/Starman - 2012 Remaster.mp3">Starman - 2012 Remaster</option>
+<option value="zwicker_mp3/Sthlm Sunset.mp3">Sthlm Sunset</option>
+<option value="zwicker_mp3/SUBEME LA RADIO (feat. Descemer Bueno & Zion & Lennox).mp3">SUBEME LA RADIO (feat. Descemer Bueno & Zion & Lennox)</option>
+<option value="zwicker_mp3/Superstition - Single Version.mp3">Superstition - Single Version</option>
+<option value="zwicker_mp3/Take You Higher.mp3">Take You Higher</option>
+<option value="zwicker_mp3/Teenage Dirtbag.mp3">Teenage Dirtbag</option>
+<option value="zwicker_mp3/Temptation.mp3">Temptation</option>
+<option value="zwicker_mp3/Tequila Sunrise - 2013 Remaster.mp3">Tequila Sunrise - 2013 Remaster</option>
+<option value="zwicker_mp3/The Breaks.mp3">The Breaks</option>
+<option value="zwicker_mp3/The Message.mp3">The Message</option>
+<option value="zwicker_mp3/The Middle.mp3">The Middle</option>
+<option value="zwicker_mp3/The Weight Is Gone.mp3">The Weight Is Gone</option>
+<option value="zwicker_mp3/This Will Be (An Everlasting Love).mp3">This Will Be (An Everlasting Love)</option>
+<option value="zwicker_mp3/Tin Man.mp3">Tin Man</option>
+<option value="zwicker_mp3/Traveller.mp3">Traveller</option>
+<option value="zwicker_mp3/Valerie - Live At BBC Radio 1 Live Lounge, London _ 2007.mp3">Valerie - Live At BBC Radio 1 Live Lounge, London _ 2007</option>
+<option value="zwicker_mp3/Virtual Insanity - Remastered.mp3">Virtual Insanity - Remastered</option>
+<option value="zwicker_mp3/Wake Up.mp3">Wake Up</option>
+<option value="zwicker_mp3/What You Want (feat. Total).mp3">What You Want (feat. Total)</option>
+<option value="zwicker_mp3/Wheels.mp3">Wheels</option>
+<option value="zwicker_mp3/When It Was Wrong.mp3">When It Was Wrong</option>
+<option value="zwicker_mp3/Who's Gonna Love Me Now.mp3">Who's Gonna Love Me Now</option>
+<option value="zwicker_mp3/Wonderwall - Remastered.mp3">Wonderwall - Remastered</option>
+<option value="zwicker_mp3/You Know.mp3">You Know</option>
+<option value="zwicker_mp3/You Make Loving Fun - 2004 Remaster.mp3">You Make Loving Fun - 2004 Remaster</option>
+<option value="zwicker_mp3/You To Me Are Everything.mp3">You To Me Are Everything</option>
+<option value="zwicker_mp3/You Want the Sun.mp3">You Want the Sun</option>
+<option value="zwicker_mp3/Your Silent Face - 2015 Remaster.mp3">Your Silent Face - 2015 Remaster</option>
+<option value="zwicker_mp3/Zero.mp3">Zero</option>
+
+</select>
+    </div>
+    <!------------------------------------>
+
+</body>
+
+<script>
+    //Visualisierung, die sich zum entsprechenden Sound bewegt
+    const audioContext = new AudioContext();
+
+    const analyserNode = audioContext.createAnalyser();
+    analyserNode.fftSize = 2048;
+
+    const canvas = document.getElementById('visualizer');
+    const canvasContext = canvas.getContext('2d');
+
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+
+    const audioElement = document.getElementById('audio');
+    const audioSrc = audioContext.createMediaElementSource(audioElement);
+
+    //Audiospur mit Analyse und Audioinhalt verbinden, damit sich die Balken des Visualizers zur Musik bewegen.
+    audioSrc.connect(analyserNode).connect(audioContext.destination);
+
+    const bufferLength = analyserNode.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    const barWidth = (WIDTH / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
+
+    //Balkenanzeige immer aktuell halten
+    function renderFrame() {
+        requestAnimationFrame(renderFrame);
+
+        x = 0;
+
+        analyserNode.getByteFrequencyData(dataArray);
+
+
+        //Canvasfarbe
+        canvasContext.fillStyle = 'rgb(0,0,0)';
+
+        //Canvas Zeichnen
+        canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+
+        //Streifenfarbe
+        for (let i = 0; i < bufferLength; i++) {
+            barHeight = dataArray[i];
+
+            canvasContext.fillStyle = 'rgb(' + barHeight + ',207, 172';
+            canvasContext.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+            x += barWidth + 1;
+        }
+    }
+
+    renderFrame();
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    const songSelect = document.getElementById('song-select');
+
+    songSelect.addEventListener('change', function(event) {
+        audioElement.src = event.target.value;
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+    //Funktion spielt sich ab, sobald das laufende Lied beendet ist.
+    audio.addEventListener('ended', function() {
+        //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+        let randomIndex = Math.floor(Math.random() * songSelect.length);
+        //Überspringe "Stop"-Option
+        if (songSelect.options[randomIndex].value === "stop") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Überspringe "Zufällig"-Option
+        if (songSelect.options[randomIndex].value === "zufällig") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Ändere den ausgewählten Index auf die zufällige Nummer
+        songSelect.selectedIndex = randomIndex;
+        //Ändere die Audiodatei
+        audioElement.src = songSelect.value;
+        //Spiele das Audio ab
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    songSelect.addEventListener('change', function(event) {
+        if (event.target.value === "zufällig") {
+            //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+            let randomIndex = Math.floor(Math.random() * songSelect.length);
+            //Überspringe "Stop"-Option
+            if (songSelect.options[randomIndex].value === "stop") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Überspringe "Zufällig"-Option
+            if (songSelect.options[randomIndex].value === "zufällig") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Ändere den ausgewählten Index auf die zufällige Nummer
+            songSelect.selectedIndex = randomIndex;
+            //Ändere die Audiodatei
+            audioElement.src = songSelect.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        } else {
+            //Ändere die Audiodatei
+            audioElement.src = event.target.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        }
+    });
+
+
+
+
+    //Soundregler
+    const audioelement = document.getElementById('audio');
+    const volumeControl = document.getElementById('volume');
+
+    volumeControl.addEventListener('input', function(event) {
+        // Audio Lautstärke auf Reglerstärke setzen
+        audioElement.volume = event.target.value;
+    });
+    //-----------------------------------------------------
+</script>

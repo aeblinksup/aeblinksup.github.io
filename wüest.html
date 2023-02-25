@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lan de>
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+<title>PATIFY PRIVATE - WÜEST</title>
+
+
+<head>
+    <h1 class="center">Wüest</h1>
+</head>
+
+
+
+
+<body>
+    <div class="flex-oneline">
+        <!-- HOMEBUTTON -->
+        <button class="home" onclick="Home()">🏠</button>
+        <!------------------------------------>
+
+
+        <!--Soundregler-->
+        <div class="soundreglerpadding">
+            <h1 class="volumeemoji">🔊</h1>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="1">
+        </div>
+        <!------------------------------------>
+    </div>
+
+    <!--Visualizer-->
+    <canvas id="visualizer"></canvas>
+    <audio id="audio"></audio>
+    <!------------------------------------>
+
+    <hr>
+
+    <!-- Dropdown-Menü zum Auswählen eines Songs -->
+    <div class="song-select-padding">
+        <select id="song-select" class="song-select" multiple="multiple" size="1">
+    <option class="stopmusic" value="stop">Stop</option>
+
+    <option class="zufällig" value="zufällig">Zufällig</option>
+
+    <option value="wüest_mp3/1000x COOLER.mp3">1000x COOLER</option>
+<option value="wüest_mp3/50er.mp3">50er</option>
+<option value="wüest_mp3/9010.mp3">9010</option>
+<option value="wüest_mp3/Alien.mp3">Alien</option>
+<option value="wüest_mp3/AN ALLE, DIE DAS FÜHLEN.mp3">AN ALLE, DIE DAS FÜHLEN</option>
+<option value="wüest_mp3/Aspirin Komplex.mp3">Aspirin Komplex</option>
+<option value="wüest_mp3/Auf & Ab.mp3">Auf & Ab</option>
+<option value="wüest_mp3/Bei Dir.mp3">Bei Dir</option>
+<option value="wüest_mp3/Best Friend.mp3">Best Friend</option>
+<option value="wüest_mp3/BIER.mp3">BIER</option>
+<option value="wüest_mp3/Bye Bye.mp3">Bye Bye</option>
+<option value="wüest_mp3/Crashen.mp3">Crashen</option>
+<option value="wüest_mp3/DER LETZTE SONG (ALLES WIRD GUT) (feat. Fred Rabe).mp3">DER LETZTE SONG (ALLES WIRD GUT) (feat. Fred Rabe)</option>
+<option value="wüest_mp3/Der Rest meines Lebens.mp3">Der Rest meines Lebens</option>
+<option value="wüest_mp3/Erschiess mich (Intro).mp3">Erschiess mich (Intro)</option>
+<option value="wüest_mp3/Feinstaub.mp3">Feinstaub</option>
+<option value="wüest_mp3/Filmriss.mp3">Filmriss</option>
+<option value="wüest_mp3/Frei.mp3">Frei</option>
+<option value="wüest_mp3/Go Godzilla On Ya Frikkn City.mp3">Go Godzilla On Ya Frikkn City</option>
+<option value="wüest_mp3/GUT_BESSER_ICH.mp3">GUT_BESSER_ICH</option>
+<option value="wüest_mp3/Hal5.mp3">Hal5</option>
+<option value="wüest_mp3/Irgendjemand Anders.mp3">Irgendjemand Anders</option>
+<option value="wüest_mp3/Irgendwas dazwischen.mp3">Irgendwas dazwischen</option>
+<option value="wüest_mp3/Kopf aus.mp3">Kopf aus</option>
+<option value="wüest_mp3/leichter_kälter.mp3">leichter_kälter</option>
+<option value="wüest_mp3/Live Bitch.mp3">Live Bitch</option>
+<option value="wüest_mp3/Männer 2.0.mp3">Männer 2.0</option>
+<option value="wüest_mp3/Nachts wach.mp3">Nachts wach</option>
+<option value="wüest_mp3/Nicht die Musik.mp3">Nicht die Musik</option>
+<option value="wüest_mp3/Niemand bringt Marten um.mp3">Niemand bringt Marten um</option>
+<option value="wüest_mp3/Noch ein Lied.mp3">Noch ein Lied</option>
+<option value="wüest_mp3/Okay.mp3">Okay</option>
+<option value="wüest_mp3/On_Off.mp3">On_Off</option>
+<option value="wüest_mp3/Powerade.mp3">Powerade</option>
+<option value="wüest_mp3/Rainbow Road.mp3">Rainbow Road</option>
+<option value="wüest_mp3/Schiff.mp3">Schiff</option>
+<option value="wüest_mp3/SHIT TO SAY.mp3">SHIT TO SAY</option>
+<option value="wüest_mp3/SOUL EATER.mp3">SOUL EATER</option>
+<option value="wüest_mp3/Sterben kannst du überall.mp3">Sterben kannst du überall</option>
+<option value="wüest_mp3/Taxi aus Berlin.mp3">Taxi aus Berlin</option>
+<option value="wüest_mp3/Valentina.mp3">Valentina</option>
+<option value="wüest_mp3/Vermissen (feat. Henning May).mp3">Vermissen (feat. Henning May)</option>
+<option value="wüest_mp3/VIELLEICHT.mp3">VIELLEICHT</option>
+<option value="wüest_mp3/Wenn du mich siehst (RIBELLU Remix).mp3">Wenn du mich siehst (RIBELLU Remix)</option>
+<option value="wüest_mp3/Wenn du weinst - Housejunkee Remix.mp3">Wenn du weinst - Housejunkee Remix</option>
+<option value="wüest_mp3/Wenn Du weinst.mp3">Wenn Du weinst</option>
+<option value="wüest_mp3/WEREGARURUMON.mp3">WEREGARURUMON</option>
+<option value="wüest_mp3/Wie viel ist dein Outfit wert.mp3">Wie viel ist dein Outfit wert</option>
+<option value="wüest_mp3/Wildberry Lillet.mp3">Wildberry Lillet</option>
+<option value="wüest_mp3/Zukunft Pink (feat. Inéz).mp3">Zukunft Pink (feat. Inéz)</option>
+
+</select>
+    </div>
+    <!------------------------------------>
+
+</body>
+
+<script>
+    //Visualisierung, die sich zum entsprechenden Sound bewegt
+    const audioContext = new AudioContext();
+
+    const analyserNode = audioContext.createAnalyser();
+    analyserNode.fftSize = 2048;
+
+    const canvas = document.getElementById('visualizer');
+    const canvasContext = canvas.getContext('2d');
+
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+
+    const audioElement = document.getElementById('audio');
+    const audioSrc = audioContext.createMediaElementSource(audioElement);
+
+    //Audiospur mit Analyse und Audioinhalt verbinden, damit sich die Balken des Visualizers zur Musik bewegen.
+    audioSrc.connect(analyserNode).connect(audioContext.destination);
+
+    const bufferLength = analyserNode.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    const barWidth = (WIDTH / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
+
+    //Balkenanzeige immer aktuell halten
+    function renderFrame() {
+        requestAnimationFrame(renderFrame);
+
+        x = 0;
+
+        analyserNode.getByteFrequencyData(dataArray);
+
+
+        //Canvasfarbe
+        canvasContext.fillStyle = 'rgb(0,0,0)';
+
+        //Canvas Zeichnen
+        canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+
+        //Streifenfarbe
+        for (let i = 0; i < bufferLength; i++) {
+            barHeight = dataArray[i];
+
+            canvasContext.fillStyle = 'rgb(' + barHeight + ',207, 172';
+            canvasContext.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+            x += barWidth + 1;
+        }
+    }
+
+    renderFrame();
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    const songSelect = document.getElementById('song-select');
+
+    songSelect.addEventListener('change', function(event) {
+        audioElement.src = event.target.value;
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+    //Funktion spielt sich ab, sobald das laufende Lied beendet ist.
+    audio.addEventListener('ended', function() {
+        //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+        let randomIndex = Math.floor(Math.random() * songSelect.length);
+        //Überspringe "Stop"-Option
+        if (songSelect.options[randomIndex].value === "stop") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Überspringe "Zufällig"-Option
+        if (songSelect.options[randomIndex].value === "zufällig") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Ändere den ausgewählten Index auf die zufällige Nummer
+        songSelect.selectedIndex = randomIndex;
+        //Ändere die Audiodatei
+        audioElement.src = songSelect.value;
+        //Spiele das Audio ab
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    songSelect.addEventListener('change', function(event) {
+        if (event.target.value === "zufällig") {
+            //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+            let randomIndex = Math.floor(Math.random() * songSelect.length);
+            //Überspringe "Stop"-Option
+            if (songSelect.options[randomIndex].value === "stop") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Überspringe "Zufällig"-Option
+            if (songSelect.options[randomIndex].value === "zufällig") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Ändere den ausgewählten Index auf die zufällige Nummer
+            songSelect.selectedIndex = randomIndex;
+            //Ändere die Audiodatei
+            audioElement.src = songSelect.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        } else {
+            //Ändere die Audiodatei
+            audioElement.src = event.target.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        }
+    });
+
+
+
+
+    //Soundregler
+    const audioelement = document.getElementById('audio');
+    const volumeControl = document.getElementById('volume');
+
+    volumeControl.addEventListener('input', function(event) {
+        // Audio Lautstärke auf Reglerstärke setzen
+        audioElement.volume = event.target.value;
+    });
+    //-----------------------------------------------------
+</script>

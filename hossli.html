@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lan de>
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+<title>PATIFY PRIVATE - HOSSLi</title>
+
+
+<head>
+    <h1 class="center">Hossli</h1>
+</head>
+
+
+
+
+<body>
+    <div class="flex-oneline">
+        <!-- HOMEBUTTON -->
+        <button class="home" onclick="Home()">🏠</button>
+        <!------------------------------------>
+
+
+        <!--Soundregler-->
+        <div class="soundreglerpadding">
+            <h1 class="volumeemoji">🔊</h1>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="1">
+        </div>
+        <!------------------------------------>
+    </div>
+
+
+
+    <!--Visualizer-->
+    <canvas id="visualizer"></canvas>
+    <audio id="audio"></audio>
+    <!------------------------------------>
+
+    <hr>
+
+    <!-- Dropdown-Menü zum Auswählen eines Songs -->
+    <div class="song-select-padding">
+        <select id="song-select" class="song-select" multiple="multiple" size="1">
+    <option class="stopmusic" value="stop">Stop</option>
+
+    <option class="zufällig" value="zufällig">Zufällig</option>
+
+<option value="hossli_mp3/All My Friends Are Falling In Love.mp3">All My Friends Are Falling In Love</option> 
+<option value="hossli_mp3/Angela.mp3">Angela</option> 
+<option value="hossli_mp3/Anyone For You (Tiger Lily).mp3">Anyone For You (Tiger Lily)</option> 
+<option value="hossli_mp3/Be On Your Way.mp3">Be On Your Way</option> 
+<option value="hossli_mp3/Brazil.mp3">Brazil</option> 
+<option value="hossli_mp3/Budapest.mp3">Budapest</option> 
+<option value="hossli_mp3/Cassy O'.mp3">Cassy O'</option> 
+<option value="hossli_mp3/Cleopatra.mp3">Cleopatra</option> 
+<option value="hossli_mp3/Cold Cold Man.mp3">Cold Cold Man</option> 
+<option value="hossli_mp3/Cough Syrup.mp3">Cough Syrup</option> 
+<option value="hossli_mp3/Curveballs.mp3">Curveballs</option> 
+<option value="hossli_mp3/Dirty Paws.mp3">Dirty Paws</option> 
+<option value="hossli_mp3/Flowers In Your Hair.mp3">Flowers In Your Hair</option> 
+<option value="hossli_mp3/From Eden.mp3">From Eden</option> 
+<option value="hossli_mp3/Georgia.mp3">Georgia</option> 
+<option value="hossli_mp3/Get Away.mp3">Get Away</option> 
+<option value="hossli_mp3/Good Grief.mp3">Good Grief</option> 
+<option value="hossli_mp3/Good Idea at the Time.mp3">Good Idea at the Time</option> 
+<option value="hossli_mp3/Greek Tragedy.mp3">Greek Tragedy</option> 
+<option value="hossli_mp3/Ho Hey.mp3">Ho Hey</option> 
+<option value="hossli_mp3/Hold My Girl (Acoustic Version).mp3">Hold My Girl (Acoustic Version)</option> 
+<option value="hossli_mp3/I Always Knew.mp3">I Mas Knew</option> 
+<option value="hossli_mp3/King And Lionheart.mp3">King And Lionheart</option> 
+<option value="hossli_mp3/Let's Dance to Joy Division.mp3">Let's Dance to Joy Division</option> 
+<option value="hossli_mp3/Like Gold.mp3">Like Gold</option> 
+<option value="hossli_mp3/Lisztomania.mp3">Lisztomania</option> 
+<option value="hossli_mp3/Love Like This.mp3">Love Like This</option> 
+<option value="hossli_mp3/Mess Is Mine.mp3">Mess Is Mine</option>
+<option value="hossli_mp3/Mountain Sound.mp3">Mountain Sound</option>
+<option value="hossli_mp3/Moving to New York.mp3">Moving to New York</option>
+<option value="hossli_mp3/Ophelia.mp3">Ophelia</option>
+<option value="hossli_mp3/Out on the Street.mp3">Out on the Street</option>
+<option value="hossli_mp3/Paradise.mp3">Paradise</option>
+<option value="hossli_mp3/Pink Lemonade.mp3">Pink Lemonade</option>
+<option value="hossli_mp3/Pretty Shining People.mp3">Pretty Shining People</option>
+<option value="hossli_mp3/Pumped Up Kicks.mp3">Pumped Up Kicks</option>
+<option value="hossli_mp3/Running Up That Hill - triple j Like a Version.mp3">Running Up That Hill - triple j Like a Version</option>
+<option value="hossli_mp3/Sight of the Sun - Single Version.mp3">Sight of the Sun - Single Version</option>
+<option value="hossli_mp3/Sleep On The Floor.mp3">Sleep On The Floor</option>
+<option value="hossli_mp3/Stars.mp3">Stars</option>
+<option value="hossli_mp3/Stubborn Love.mp3">Stubborn Love</option>
+<option value="hossli_mp3/Sun.mp3">Sun</option>
+<option value="hossli_mp3/Sweet Disposition.mp3">Sweet Disposition</option>
+<option value="hossli_mp3/Take It Easy.mp3">Take It Easy</option>
+<option value="hossli_mp3/Take Me To Church.mp3">Take Me To Church</option>
+<option value="hossli_mp3/Things We Lost In The Fire.mp3">Things We Lost In The Fire</option>
+<option value="hossli_mp3/Toronto.mp3">Toronto</option>
+<option value="hossli_mp3/Trouble.mp3">Trouble</option>
+<option value="hossli_mp3/Wetsuit.mp3">Wetsuit</option>
+<option value="hossli_mp3/Your Body Is a Weapon.mp3">Your Body Is a Weapon</option>
+
+</select>
+    </div>
+    <!------------------------------------>
+
+</body>
+
+<script>
+    //Visualisierung, die sich zum entsprechenden Sound bewegt
+    const audioContext = new AudioContext();
+
+    const analyserNode = audioContext.createAnalyser();
+    analyserNode.fftSize = 2048;
+
+    const canvas = document.getElementById('visualizer');
+    const canvasContext = canvas.getContext('2d');
+
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+
+    const audioElement = document.getElementById('audio');
+    const audioSrc = audioContext.createMediaElementSource(audioElement);
+
+    //Audiospur mit Analyse und Audioinhalt verbinden, damit sich die Balken des Visualizers zur Musik bewegen.
+    audioSrc.connect(analyserNode).connect(audioContext.destination);
+
+    const bufferLength = analyserNode.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    const barWidth = (WIDTH / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
+
+    //Balkenanzeige immer aktuell halten
+    function renderFrame() {
+        requestAnimationFrame(renderFrame);
+
+        x = 0;
+
+        analyserNode.getByteFrequencyData(dataArray);
+
+
+        //Canvasfarbe
+        canvasContext.fillStyle = 'rgb(0,0,0)';
+
+        //Canvas Zeichnen
+        canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+
+        //Streifenfarbe
+        for (let i = 0; i < bufferLength; i++) {
+            barHeight = dataArray[i];
+
+            canvasContext.fillStyle = 'rgb(' + barHeight + ',207, 172';
+            canvasContext.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+            x += barWidth + 1;
+        }
+    }
+
+    renderFrame();
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    const songSelect = document.getElementById('song-select');
+
+    songSelect.addEventListener('change', function(event) {
+        audioElement.src = event.target.value;
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+    //Funktion spielt sich ab, sobald das laufende Lied beendet ist.
+    audio.addEventListener('ended', function() {
+        //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+        let randomIndex = Math.floor(Math.random() * songSelect.length);
+        //Überspringe "Stop"-Option
+        if (songSelect.options[randomIndex].value === "stop") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Überspringe "Zufällig"-Option
+        if (songSelect.options[randomIndex].value === "zufällig") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Ändere den ausgewählten Index auf die zufällige Nummer
+        songSelect.selectedIndex = randomIndex;
+        //Ändere die Audiodatei
+        audioElement.src = songSelect.value;
+        //Spiele das Audio ab
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    songSelect.addEventListener('change', function(event) {
+        if (event.target.value === "zufällig") {
+            //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+            let randomIndex = Math.floor(Math.random() * songSelect.length);
+            //Überspringe "Stop"-Option
+            if (songSelect.options[randomIndex].value === "stop") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Überspringe "Zufällig"-Option
+            if (songSelect.options[randomIndex].value === "zufällig") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Ändere den ausgewählten Index auf die zufällige Nummer
+            songSelect.selectedIndex = randomIndex;
+            //Ändere die Audiodatei
+            audioElement.src = songSelect.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        } else {
+            //Ändere die Audiodatei
+            audioElement.src = event.target.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        }
+    });
+
+
+
+
+    //Soundregler
+    const audioelement = document.getElementById('audio');
+    const volumeControl = document.getElementById('volume');
+
+    volumeControl.addEventListener('input', function(event) {
+        // Audio Lautstärke auf Reglerstärke setzen
+        audioElement.volume = event.target.value;
+    });
+    //-----------------------------------------------------
+</script>

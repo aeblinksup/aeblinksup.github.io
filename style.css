@@ -1,0 +1,334 @@
+/*Allgemein*/
+
+body {
+    background-size: cover;
+    background-color: #222831;
+}
+
+p {
+    font-size: 30px;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+
+/*----------------*/
+
+
+/*Texte*/
+
+.center {
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+    color: white;
+}
+
+.bcenter {
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+    color: rgb(0, 0, 0);
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+    text-decoration: underline;
+    color: white;
+}
+
+.title2 {
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+    text-decoration: solid;
+    color: white;
+}
+
+.ntext {
+    color: white;
+}
+
+.text {
+    display: flex;
+    justify-content: space-around;
+    color: rgb(255, 255, 255);
+}
+
+.text2 {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    text-decoration: dashed;
+}
+
+.bluetext {
+    color: lightskyblue;
+    text-decoration: underline;
+}
+
+.nutzungsbedingungen {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/*----------------*/
+
+
+/*Buttons*/
+
+.musikarten {
+    display: flex;
+    justify-content: space-around;
+}
+
+.personen {
+    display: flex;
+    justify-content: space-around;
+}
+
+.playlistbutton {
+    height: 50px;
+    width: 160px;
+    border-radius: 1000px;
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 22px;
+    background: linear-gradient(to right, rgb(0, 207, 172), rgb(0, 75, 62));
+    transition: 0.2s;
+}
+
+.home {
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 22px;
+    background: linear-gradient(to right, rgb(0, 207, 172), rgb(0, 75, 62));
+    transition: 0.2s;
+}
+
+.buttons {
+    height: 50px;
+    width: 160px;
+    border-radius: 1000px;
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 22px;
+    background: linear-gradient(to right, rgb(0, 207, 172), rgb(0, 75, 62));
+    transition: 0.2s;
+}
+
+button:hover {
+    width: 200px;
+    cursor: pointer
+}
+
+.accept {
+    display: block;
+    margin-left: auto;
+    width: 5cm;
+}
+
+.acceptpadding {
+    padding-right: 2cm;
+    padding-top: 2%;
+}
+
+.back {
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 22px;
+    background: linear-gradient(to right, rgb(0, 207, 172), rgb(0, 75, 62));
+    transition: 0.2s;
+}
+
+
+/*----------------*/
+
+
+/*LOGO*/
+
+.patifylogo {
+    block-size: 5cm;
+}
+
+.patify {
+    color: white;
+    display: flex;
+}
+
+.patifytext {
+    padding-top: 1.25cm;
+    padding-left: 1cm;
+}
+
+
+/*----------------*/
+
+
+/*Anmelde/Informationsfeld*/
+
+.loginborderpadding {
+    padding: 5%;
+}
+
+.loginborder {
+    border: 5%;
+    border-radius: 5cm;
+    border-width: 5cm;
+    border-color: black;
+    background-color: white;
+}
+
+
+/*-----------------------*/
+
+
+/*Interpreten*/
+
+.Interpreten {
+    color: white;
+}
+
+
+/*-----------------------*/
+
+
+/*Visualizer */
+
+canvas {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    max-height: 20cm;
+    max-width: 23cm;
+}
+
+
+/*-----------------------*/
+
+
+/*Einzelne Song Auswahl*/
+
+.song-select {
+    max-width: 85%;
+    width: 100%;
+    height: 500px;
+    background-color: #222831;
+    color: white;
+    display: block;
+    margin: auto;
+}
+
+.song-select-padding {
+    display: block;
+    margin: auto;
+}
+
+.stopmusic {
+    background-color: rgb(197, 0, 0);
+    color: white;
+}
+
+.zufällig {
+    background-color: rgb(0, 38, 143);
+    color: white;
+}
+
+
+/*-----------------------*/
+
+
+/*Soundregler */
+
+.soundreglerpadding {
+    margin-right: 2cm;
+    margin-left: auto;
+    display: flex;
+}
+
+.volumeemoji {
+    padding-right: 4mm;
+}
+
+
+/*-----------------------*/
+
+
+/*Verschiedene "Items" auf eine Linie bringen.*/
+
+.flex-oneline {
+    display: flex;
+}
+
+
+/*-----------------------*/
+
+
+/*Absatz Abstand*/
+
+.space5p {
+    display: flex;
+    padding-top: 5%;
+}
+
+
+/*---------------------- */
+
+
+/*Bildschirm anpassungen*/
+
+@media screen and (max-width: 920px) {
+    .loginborderpadding {
+        padding: 1px;
+    }
+    .loginborder {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 5px;
+        border: none;
+        border-radius: 10px;
+    }
+    h1 {
+        font-size: 45px;
+    }
+    h2 {
+        font-size: 35px;
+    }
+    h3 {
+        font-size: 25px;
+    }
+    p {
+        font-size: 40px;
+    }
+    .buttons {
+        height: 70px;
+        width: 160px;
+        border-radius: 1000px;
+        border: none;
+        color: white;
+        font-family: sans-serif;
+        font-size: 30px;
+    }
+    .nutzungsbedingungen {
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+    }
+}

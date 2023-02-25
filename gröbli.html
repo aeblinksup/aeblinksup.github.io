@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lan de>
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+<title>PATIFY PRIVATE - GRÖBLI</title>
+
+
+<head>
+    <h1 class="center">Gröbli</h1>
+</head>
+
+
+
+
+<body>
+    <div class="flex-oneline">
+        <!-- HOMEBUTTON -->
+        <button class="home" onclick="Home()">🏠</button>
+        <!------------------------------------>
+
+
+        <!--Soundregler-->
+        <div class="soundreglerpadding">
+            <h1 class="volumeemoji">🔊</h1>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="1">
+        </div>
+        <!------------------------------------>
+    </div>
+
+    <!--Visualizer-->
+    <canvas id="visualizer"></canvas>
+    <audio id="audio"></audio>
+    <!------------------------------------>
+
+    <hr>
+
+    <!-- Dropdown-Menü zum Auswählen eines Songs -->
+    <div class="song-select-padding">
+        <select id="song-select" class="song-select" multiple="multiple" size="1">
+    <option class="stopmusic" value="stop">Stop</option>
+
+    <option class="zufällig" value="zufällig">Zufällig</option>
+
+    <option value="gröbli_mp3/99 Luftballons.mp3">99 Luftballons</option>
+<option value="gröbli_mp3/Africa.mp3">Africa</option>
+<option value="gröbli_mp3/All My People.mp3">All My People</option>
+<option value="gröbli_mp3/All Star.mp3">All Star</option>
+<option value="gröbli_mp3/Around the World (La La La La La) - Radio Version.mp3">Around the World (La La La La La) - Radio Version</option>
+<option value="gröbli_mp3/Baby One More Time.mp3">Baby One More Time</option>
+<option value="gröbli_mp3/Bailando.mp3">Bailando</option>
+<option value="gröbli_mp3/Barbie Girl.mp3">Barbie Girl</option>
+<option value="gröbli_mp3/Billie Jean.mp3">Billie Jean</option>
+<option value="gröbli_mp3/Blue (Da Ba Dee) - Gabry Ponte Ice Pop Radio.mp3">Blue (Da Ba Dee) - Gabry Ponte Ice Pop Radio</option>
+<option value="gröbli_mp3/Break Your Heart.mp3">Break Your Heart</option>
+<option value="gröbli_mp3/Bumpy Ride.mp3">Bumpy Ride</option>
+<option value="gröbli_mp3/Coco Jamboo.mp3">Coco Jamboo</option>
+<option value="gröbli_mp3/Crazy Little Thing Called Love - Remastered 2011.mp3">Crazy Little Thing Called Love - Remastered 2011</option>
+<option value="gröbli_mp3/Crazy.mp3">Crazy</option>
+<option value="gröbli_mp3/Daddy Cool.mp3">Daddy Cool</option>
+<option value="gröbli_mp3/Dancing Queen.mp3">Dancing Queen</option>
+<option value="gröbli_mp3/Don't Cha.mp3">Don't Cha</option>
+<option value="gröbli_mp3/Down.mp3">Down</option>
+<option value="gröbli_mp3/Dragostea din tei.mp3">Dragostea din tei</option>
+<option value="gröbli_mp3/Every Breath You Take.mp3">Every Breath You Take</option>
+<option value="gröbli_mp3/Everybody (Backstreet's Back) - Radio Edit.mp3">Everybody (Backstreet's Back) - Radio Edit</option>
+<option value="gröbli_mp3/Eye of the Tiger.mp3">Eye of the Tiger</option>
+<option value="gröbli_mp3/Fight For This Love.mp3">Fight For This Love</option>
+<option value="gröbli_mp3/Gimme! Gimme! Gimme! (A Man After Midnight).mp3">Gimme! Gimme! Gimme! (A Man After Midnight)</option>
+<option value="gröbli_mp3/Girls Just Want to Have Fun.mp3">Girls Just Want to Have Fun</option>
+<option value="gröbli_mp3/Higher Ground - FlameMakers Radio Edit.mp3">Higher Ground - FlameMakers Radio Edit</option>
+<option value="gröbli_mp3/Hips Don't Lie (feat. Wyclef Jean).mp3">Hips Don't Lie (feat. Wyclef Jean)</option>
+<option value="gröbli_mp3/Hold the Line.mp3">Hold the Line</option>
+<option value="gröbli_mp3/I Don't Feel Like Dancin' - Radio Edit.mp3">I Don't Feel Like Dancin' - Radio Edit</option>
+<option value="gröbli_mp3/I Gotta Feeling.mp3">I Gotta Feeling</option>
+<option value="gröbli_mp3/I Want It That Way.mp3">I Want It That Way</option>
+<option value="gröbli_mp3/Ice Ice Baby.mp3">Ice Ice Baby</option>
+<option value="gröbli_mp3/It's Raining Men.mp3">It's Raining Men</option>
+<option value="gröbli_mp3/Jailhouse Rock.mp3">Jailhouse Rock</option>
+<option value="gröbli_mp3/Karma Chameleon - Remastered 2002.mp3">Karma Chameleon - Remastered 2002</option>
+<option value="gröbli_mp3/Kung Fu Fighting.mp3">Kung Fu Fighting</option>
+<option value="gröbli_mp3/Lady Marmalade - Single Edit.mp3">Lady Marmalade - Single Edit</option>
+<option value="gröbli_mp3/Livin' On A Prayer.mp3">Livin' On A Prayer</option>
+<option value="gröbli_mp3/Macarena - River Re-Mix 103 BPM.mp3">Macarena - River Re-Mix 103 BPM</option>
+<option value="gröbli_mp3/Macarena.mp3">Macarena</option>
+<option value="gröbli_mp3/Magic in the Air (feat. Ahmed Chawki).mp3">Magic in the Air (feat. Ahmed Chawki)</option>
+<option value="gröbli_mp3/Mambo No. 5 (a Little Bit of...).mp3">Mambo No. 5 (a Little Bit of...)</option>
+<option value="gröbli_mp3/Mamma Mia.mp3">Mamma Mia</option>
+<option value="gröbli_mp3/Mr. Vain - Original Radio Edit.mp3">Mr. Vain - Original Radio Edit</option>
+<option value="gröbli_mp3/Obsesion.mp3">Obsesion</option>
+<option value="gröbli_mp3/One More Time - Radio Edit [Short Radio Edit].mp3">One More Time - Radio Edit [Short Radio Edit]</option>
+<option value="gröbli_mp3/Oops!...I Did It Again.mp3">Oops!...I Did It Again</option>
+<option value="gröbli_mp3/Replay.mp3">Replay</option>
+<option value="gröbli_mp3/Sexbomb.mp3">Sexbomb</option>
+<option value="gröbli_mp3/Sexy - Video Mix.mp3">Sexy - Video Mix</option>
+<option value="gröbli_mp3/Sing Hallelujah!.mp3">Sing Hallelujah!</option>
+<option value="gröbli_mp3/Stayin' Alive - From _Saturday Night Fever_ Soundtrack.mp3">Stayin' Alive - From _Saturday Night Fever_ Soundtrack</option>
+<option value="gröbli_mp3/Superstar.mp3">Superstar</option>
+<option value="gröbli_mp3/Superstar_1.mp3">Superstar_1</option>
+<option value="gröbli_mp3/Superstition - Single Version.mp3">Superstition - Single Version</option>
+<option value="gröbli_mp3/Sweet Home Alabama.mp3">Sweet Home Alabama</option>
+<option value="gröbli_mp3/Take Me Home, Country Roads.mp3">Take Me Home, Country Roads</option>
+<option value="gröbli_mp3/Teenage Dirtbag.mp3">Teenage Dirtbag</option>
+<option value="gröbli_mp3/Temperature.mp3">Temperature</option>
+<option value="gröbli_mp3/The Final Countdown.mp3">The Final Countdown</option>
+<option value="gröbli_mp3/The Ketchup Song (Aserej) - Spanglish Version.mp3">The Ketchup Song (Aserejé) - Spanglish Version</option>
+<option value="gröbli_mp3/U Can't Touch This.mp3">U Can't Touch This</option>
+<option value="gröbli_mp3/Wake Me Up Before You Go-Go.mp3">Wake Me Up Before You Go-Go</option>
+<option value="gröbli_mp3/Walking On Sunshine.mp3">Walking On Sunshine</option>
+<option value="gröbli_mp3/Wannabe.mp3">Wannabe</option>
+<option value="gröbli_mp3/Whenever, Wherever.mp3">Whenever, Wherever</option>
+<option value="gröbli_mp3/Where Is The Love.mp3">Where Is The Love</option>
+<option value="gröbli_mp3/Who Let The Dogs Out.mp3">Who Let The Dogs Out</option>
+<option value="gröbli_mp3/Yeah! (feat. Lil Jon & Ludacris).mp3">Yeah! (feat. Lil Jon & Ludacris)</option>
+<option value="gröbli_mp3/YMCA.mp3">YMCA</option>
+<option value="gröbli_mp3/You Spin Me Round (Like a Record).mp3">You Spin Me Round</option>
+
+</select>
+    </div>
+    <!------------------------------------>
+
+</body>
+
+<script>
+    //Visualisierung, die sich zum entsprechenden Sound bewegt
+    const audioContext = new AudioContext();
+
+    const analyserNode = audioContext.createAnalyser();
+    analyserNode.fftSize = 2048;
+
+    const canvas = document.getElementById('visualizer');
+    const canvasContext = canvas.getContext('2d');
+
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+
+    const audioElement = document.getElementById('audio');
+    const audioSrc = audioContext.createMediaElementSource(audioElement);
+
+    //Audiospur mit Analyse und Audioinhalt verbinden, damit sich die Balken des Visualizers zur Musik bewegen.
+    audioSrc.connect(analyserNode).connect(audioContext.destination);
+
+    const bufferLength = analyserNode.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    const barWidth = (WIDTH / bufferLength) * 2.5;
+    let barHeight;
+    let x = 0;
+
+    //Balkenanzeige immer aktuell halten
+    function renderFrame() {
+        requestAnimationFrame(renderFrame);
+
+        x = 0;
+
+        analyserNode.getByteFrequencyData(dataArray);
+
+
+        //Canvasfarbe
+        canvasContext.fillStyle = 'rgb(0,0,0)';
+
+        //Canvas Zeichnen
+        canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+
+        //Streifenfarbe
+        for (let i = 0; i < bufferLength; i++) {
+            barHeight = dataArray[i];
+
+            canvasContext.fillStyle = 'rgb(' + barHeight + ',207, 172';
+            canvasContext.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+            x += barWidth + 1;
+        }
+    }
+
+    renderFrame();
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    const songSelect = document.getElementById('song-select');
+
+    songSelect.addEventListener('change', function(event) {
+        audioElement.src = event.target.value;
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+    //Funktion spielt sich ab, sobald das laufende Lied beendet ist.
+    audio.addEventListener('ended', function() {
+        //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+        let randomIndex = Math.floor(Math.random() * songSelect.length);
+        //Überspringe "Stop"-Option
+        if (songSelect.options[randomIndex].value === "stop") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Überspringe "Zufällig"-Option
+        if (songSelect.options[randomIndex].value === "zufällig") {
+            randomIndex = (randomIndex + 1) % songSelect.length;
+        }
+        //Ändere den ausgewählten Index auf die zufällige Nummer
+        songSelect.selectedIndex = randomIndex;
+        //Ändere die Audiodatei
+        audioElement.src = songSelect.value;
+        //Spiele das Audio ab
+        audioElement.play();
+    });
+    //-----------------------------------------------------
+
+
+    //Dropdown-Menü zum Auswählen eines Lieds
+    songSelect.addEventListener('change', function(event) {
+        if (event.target.value === "zufällig") {
+            //Generiere eine zufällige Nummer zwischen 0 und Länge des Dropdown-Menüs (exklusiv)
+            let randomIndex = Math.floor(Math.random() * songSelect.length);
+            //Überspringe "Stop"-Option
+            if (songSelect.options[randomIndex].value === "stop") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Überspringe "Zufällig"-Option
+            if (songSelect.options[randomIndex].value === "zufällig") {
+                randomIndex = (randomIndex + 1) % songSelect.length;
+            }
+            //Ändere den ausgewählten Index auf die zufällige Nummer
+            songSelect.selectedIndex = randomIndex;
+            //Ändere die Audiodatei
+            audioElement.src = songSelect.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        } else {
+            //Ändere die Audiodatei
+            audioElement.src = event.target.value;
+            //Spiele das Audio ab
+            audioElement.play();
+        }
+    });
+
+
+
+
+    //Soundregler
+    const audioelement = document.getElementById('audio');
+    const volumeControl = document.getElementById('volume');
+
+    volumeControl.addEventListener('input', function(event) {
+        // Audio Lautstärke auf Reglerstärke setzen
+        audioElement.volume = event.target.value;
+    });
+    //-----------------------------------------------------
+</script>
