@@ -93,6 +93,10 @@ h1 {
     justify-content: space-around;
 }
 
+.personen2 {
+    display: none;
+}
+
 .playlistbutton {
     height: 50px;
     width: 160px;
@@ -330,5 +334,12 @@ canvas {
         font-size: 25px;
         display: flex;
         justify-content: center;
+    }
+    .personen2 {
+        display: flex;
+        justify-content: space-around;
+    }
+    .personen {
+        display: none;
     }
 }
